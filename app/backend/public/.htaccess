@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# PHP設定の上書き
+php_value upload_max_filesize 25M
+php_value post_max_size 25M
+php_value memory_limit 256M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value default_charset "UTF-8"
+php_value display_errors On
+php_value error_reporting E_ALL
+php_value log_errors On
+php_value error_log "storage/logs/php_errors.log"
+
+# SSL証明書の検証を無効化（開発環境のみ）
+php_value curl.cainfo "C:/Apache24/htdocs/rokuon_vue/backend/storage/cacert.pem"
+php_value openssl.cafile "C:/Apache24/htdocs/rokuon_vue/backend/storage/cacert.pem"

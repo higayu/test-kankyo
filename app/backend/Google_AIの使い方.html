@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Gemini APIとSpeech-to-Textの比較</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    .highlight {
+      background-color: #e6f7ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gemini APIとSpeech-to-Textの比較</h1>
+
+  <h2>概要</h2>
+  <h3>音声ファイルから文字を出力する方法について</h3>
+  <p>
+    Google Gemini API（<code>google-generativeai</code>）と、従来の Google Cloud Speech-to-Text API は、いずれも音声から文字起こしを行う手段ですが、
+    用途や特徴に応じて選ぶ必要があります。
+  </p>
+  <p>
+    詳細については、<a href="https://ai.google.dev/gemini-api/docs/audio?utm_source=chatgpt.com&hl=ja">Gemini APIの音声理解に関するドキュメント</a>を参照してください。
+  </p>
+
+  <h2>比較表</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>Gemini API</th>
+        <th>Speech-to-Text API</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>提供元</td>
+        <td>Google DeepMind / Gemini</td>
+        <td>Google Cloud Platform</td>
+      </tr>
+      <tr>
+        <td>モデルの性質</td>
+        <td>LLM（大規模言語モデル）</td>
+        <td>音声認識専用モデル</td>
+      </tr>
+      <tr>
+        <td>主な用途</td>
+        <td>要約・話者分離・文脈理解</td>
+        <td>精密な音声テキスト変換</td>
+      </tr>
+      <tr>
+        <td>話者分離</td>
+        <td>指示により柔軟に対応</td>
+        <td>標準で対応（Diarization）</td>
+      </tr>
+      <tr>
+        <td>タイムスタンプ</td>
+        <td>形式を指定すれば対応</td>
+        <td>単語ごとに明確なタイム情報あり</td>
+      </tr>
+      <tr>
+        <td>精度（文脈理解）</td>
+        <td>高（自然な文生成）</td>
+        <td>高（発音と単語精度）</td>
+      </tr>
+      <tr>
+        <td>速度</td>
+        <td>やや遅い（生成型）</td>
+        <td>高速（リアルタイム対応）</td>
+      </tr>
+      <tr>
+        <td>実装のしやすさ</td>
+        <td>APIキーのみで簡単</td>
+        <td>サービスアカウントJSONが必要</td>
+      </tr>
+      <tr>
+        <td>出力の柔軟性</td>
+        <td>話者名、書式、要約など柔軟</td>
+        <td>定型的で制限あり</td>
+      </tr>
+      <tr>
+        <td>言語の扱い</td>
+        <td>自然翻訳・多言語対応</td>
+        <td>多言語対応（言語指定必要）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>用途別おすすめ</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>目的</th>
+        <th>おすすめ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>会議・インタビューの文字起こし</td>
+        <td class="highlight">Gemini API</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
