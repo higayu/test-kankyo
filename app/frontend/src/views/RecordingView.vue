@@ -270,6 +270,9 @@ const startRecording = async () => {
     isRecording.value = true
     recordingTime.value = 0
 
+    // 変更後（両対応）
+    let recordingInterval: ReturnType<typeof setInterval> | null = null
+
     // 録音時間の更新
     recordingInterval = setInterval(() => {
       recordingTime.value++
